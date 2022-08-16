@@ -24,22 +24,22 @@ class ContactTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       // super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
       
        // contactList.list.sort { $0.name < $1.name}
         tableView.reloadData()
         
     }
 //
-//    @IBAction func toggleEditMode(_ sender: UIBarButtonItem) {
-//        if isEditing{
-//            sender.title = "Edit"
-//            setEditing(false, animated: true)
-//        } else{
-//            sender.title = "Done"
-//            setEditing(true, animated: true)
-//        }
-//    }
+    @IBAction func toggleEditMode(_ sender: UIBarButtonItem) {
+        if isEditing{
+            sender.title = "Edit"
+            setEditing(false, animated: true)
+        } else{
+            sender.title = "Done"
+            setEditing(true, animated: true)
+        }
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
