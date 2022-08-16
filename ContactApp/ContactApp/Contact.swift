@@ -1,11 +1,12 @@
 //
 //  Contact.swift
-//  ContactApp
+//  My_Contacts
 //
-//  Created by Rushabh Shah on 2022-08-14.
+//  Created by Rushabh Shah on 15/08/22.
 //
 
 import Foundation
+
 class Contact: NSObject, NSCoding, NSSecureCoding {
     
     static var supportsSecureCoding: Bool = false
@@ -59,7 +60,7 @@ class Contact: NSObject, NSCoding, NSSecureCoding {
 //            let randomNum = [
 //            "1234567890",
 //            "2345678901",
-//
+//            
 //        ]
 //
 //            self.init(name: randomName.randomElement()!, lastName: randomLastName.randomElement()!, number: randomNum.randomElement()!)
@@ -75,4 +76,3 @@ class Contact: NSObject, NSCoding, NSSecureCoding {
     
     
 }
-

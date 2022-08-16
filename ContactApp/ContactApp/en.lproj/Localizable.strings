@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  My_Contacts
+
+ //  Created by Rushabh Shah on 15/08/22.
+
+*/
+
+"Etes-vous sûr que vous voulez supprimer?" = "Are you sure you want to delete?";
+"Les contacts supprimés ne peuvent pas être récupérés" = "Deleted contacts cannot be retrieved";
+"Oui" = "Yes";
+"Non" = "No";

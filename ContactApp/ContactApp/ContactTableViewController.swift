@@ -1,8 +1,8 @@
 //
-//  ContactViewController.swift
-//  ContactApp
+//  ContactTableViewController.swift
+//  My_Contacts
 //
-//  Created by Rushabh Shah on 2022-08-14.
+//  Created by Rushabh Shah on 15/08/22.
 //
 
 import UIKit
@@ -105,7 +105,7 @@ class ContactTableViewController: UITableViewController {
             
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
+        }    
     }
    
 
