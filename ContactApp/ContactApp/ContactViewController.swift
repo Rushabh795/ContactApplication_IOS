@@ -1,5 +1,5 @@
 //
-//  ContactsTableViewController.swift
+//  ContactViewController.swift
 //  ContactApp
 //
 //  Created by Rushabh Shah on 2022-08-14.
@@ -7,14 +7,16 @@
 
 import UIKit
 
-class ContactsTableViewController: UITableViewController {
-
+class ContactViewController: UITableViewController {
+    var contacts : [[ContactDataModel]] = []
+   
     override func viewDidLoad() {
+      
         super.viewDidLoad()
-
+//Each array has name and phonenumber
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+ 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -23,23 +25,25 @@ class ContactsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return contacts.count
     }
 
-    /*
+        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
+            let contact = contacts[indexPath.row]
+            cell.textLabel?.text = contact.value(forKey:"name") as? String
+            cell.detailTextLabel?.text = contact.value(forKey:"phoneNumber") as? String
+            
+            return cell
+        }
+        
+    
 
     /*
     // Override to support conditional editing of the table view.

@@ -13,7 +13,9 @@
 		1073D6C428A98F26003DA543 /* ContactApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1073D6C228A98F26003DA543 /* ContactApp.xcdatamodeld */; };
 		1073D6C628A98F27003DA543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1073D6C528A98F27003DA543 /* Assets.xcassets */; };
 		1073D6C928A98F27003DA543 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1073D6C728A98F27003DA543 /* LaunchScreen.storyboard */; };
-		1073D6D128A99717003DA543 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073D6D028A99717003DA543 /* ContactsTableViewController.swift */; };
+		1073D6D328A9A0B3003DA543 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073D6D228A9A0B3003DA543 /* ContactViewController.swift */; };
+		1073D6D528A9A109003DA543 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073D6D428A9A109003DA543 /* AddContactViewController.swift */; };
+		1073D6D728A9A375003DA543 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073D6D628A9A375003DA543 /* Contact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +27,9 @@
 		1073D6C528A98F27003DA543 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1073D6C828A98F27003DA543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1073D6CA28A98F27003DA543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1073D6D028A99717003DA543 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		1073D6D228A9A0B3003DA543 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		1073D6D428A9A109003DA543 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
+		1073D6D628A9A375003DA543 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +65,9 @@
 				1073D6B928A98F26003DA543 /* AppDelegate.swift */,
 				1073D6BB28A98F26003DA543 /* SceneDelegate.swift */,
 				1073D6BF28A98F26003DA543 /* Main.storyboard */,
-				1073D6D028A99717003DA543 /* ContactsTableViewController.swift */,
+				1073D6D228A9A0B3003DA543 /* ContactViewController.swift */,
+				1073D6D628A9A375003DA543 /* Contact.swift */,
+				1073D6D428A9A109003DA543 /* AddContactViewController.swift */,
 				1073D6C528A98F27003DA543 /* Assets.xcassets */,
 				1073D6C728A98F27003DA543 /* LaunchScreen.storyboard */,
 				1073D6CA28A98F27003DA543 /* Info.plist */,
@@ -141,9 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1073D6D728A9A375003DA543 /* Contact.swift in Sources */,
+				1073D6D528A9A109003DA543 /* AddContactViewController.swift in Sources */,
 				1073D6C428A98F26003DA543 /* ContactApp.xcdatamodeld in Sources */,
+				1073D6D328A9A0B3003DA543 /* ContactViewController.swift in Sources */,
 				1073D6BA28A98F26003DA543 /* AppDelegate.swift in Sources */,
-				1073D6D128A99717003DA543 /* ContactsTableViewController.swift in Sources */,
 				1073D6BC28A98F26003DA543 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,7 +314,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Rush.ContactApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -333,7 +341,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Rush.ContactApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
