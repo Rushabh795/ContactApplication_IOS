@@ -7,20 +7,39 @@
 
 import UIKit
 
-class ContactViewController: UITableViewController {
-    var contacts : [[ContactDataModel]] = []
-   
+class ContactTableViewController: UITableViewController {
+    
+    var contactList = ContactList()
+    
+    
     override func viewDidLoad() {
-      
         super.viewDidLoad()
-//Each array has name and phonenumber
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
- 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
 
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       // super.viewWillAppear(animated)
+      
+       // contactList.list.sort { $0.name < $1.name}
+        tableView.reloadData()
+        
+    }
+//
+//    @IBAction func toggleEditMode(_ sender: UIBarButtonItem) {
+//        if isEditing{
+//            sender.title = "Edit"
+//            setEditing(false, animated: true)
+//        } else{
+//            sender.title = "Done"
+//            setEditing(true, animated: true)
+//        }
+//    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -30,19 +49,21 @@ class ContactViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return contacts.count
+        return contactList.list.count
     }
 
-        
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-            let contact = contacts[indexPath.row]
-            cell.textLabel?.text = contact.value(forKey:"name") as? String
-            cell.detailTextLabel?.text = contact.value(forKey:"phoneNumber") as? String
-            
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath) as! ContactTableViewCell
+
+        // Configure the cell...
         
+        let contact = contactList.list[indexPath.row]
+        cell.contactName?.text = contact.name + " " + contact.lastName
+        cell.contactNumber?.text = contact.number
+        
+        return cell
+    }
     
 
     /*
@@ -53,24 +74,47 @@ class ContactViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            let title = NSLocalizedString("Are you sure you want to delete?", comment: "alertController title")
+            let message = NSLocalizedString("Deleted contacts cannot be retrieved", comment: "alertController message")
+            
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            
+            let affirm = NSLocalizedString("Yes", comment: "alertyes")
+            let decline = NSLocalizedString("No", comment: "alertno")
+
+            let yes = UIAlertAction(title: affirm, style: .destructive)
+            {(UIAlertAction) in
+                self.contactList.deleteContact(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            let cancel = UIAlertAction(title: decline, style: .cancel, handler: nil)
+            
+            alert.addAction(yes)
+            alert.addAction(cancel)
+            present(alert, animated: true)
+            
+            
+            
+            
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
+   
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        contactList.moveContact(from: fromIndexPath.row, to: to.row)
     }
-    */
+    
 
     /*
     // Override to support conditional rearranging of the table view.
@@ -79,15 +123,43 @@ class ContactViewController: UITableViewController {
         return true
     }
     */
-
-    /*
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let cell = tableView.cellForRow(at: indexPath)
+//
+//        cell?.backgroundColor = .systemPink
+//        cell?.tintColor = .white
+//    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        switch segue.identifier{
+        case "newContact":
+            guard
+                let dst = segue.destination as? DetailedContactViewController
+            else {return}
+            dst.contactList = contactList
+            dst.isNew = true
+            
+        case "editContact":
+            guard
+                let dst = segue.destination as? DetailedContactViewController,
+                let indexPath = tableView.indexPathForSelectedRow
+            else {return}
+            dst.contactList = contactList
+            dst.isNew = false
+            dst.indexPath = indexPath
+            
+        default:
+            preconditionFailure("Segue identifier does not exist")
+        }
     }
-    */
+    
 
 }
